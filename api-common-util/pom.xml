@@ -10,6 +10,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>api-common-util</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.zj.api</groupId>
+            <artifactId>api-model</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 
 
 </project>
