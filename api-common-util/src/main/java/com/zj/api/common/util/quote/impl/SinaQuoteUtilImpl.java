@@ -27,7 +27,7 @@ public class SinaQuoteUtilImpl implements QuoteUtil {
 
     public QuoteInfo getStockQuote(String stockCode) {
         try {
-            String result = HttpRequest.doGet(sinaQuoteUrl.replace("stockCodes", stockCode));
+            String result = HttpRequest.doGet(sinaQuoteUrl.replace("stockCodes", stockCode.toLowerCase()));
             QuoteInfo quoteInfo = analysisResult(result);
             return quoteInfo;
         } catch (IOException e) {
@@ -39,7 +39,7 @@ public class SinaQuoteUtilImpl implements QuoteUtil {
     public Map<String, QuoteInfo> getStocksQuote(String stockCodes) {
         Map<String, QuoteInfo> quoteInfoMap = new HashMap<String, QuoteInfo>();
         try {
-            String result = HttpRequest.doGet(sinaQuoteUrl.replace("stockCodes", stockCodes));
+            String result = HttpRequest.doGet(sinaQuoteUrl.replace("stockCodes", stockCodes.toLowerCase()));
             resolveStr(quoteInfoMap, result);
         } catch (IOException e) {
             logger.error("新浪行情批量获取失败,e:{}", e);
