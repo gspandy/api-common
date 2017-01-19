@@ -6,6 +6,7 @@ import com.zj.api.model.stock.QuoteInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -27,8 +28,11 @@ public class SinaQuoteUtilImpl implements QuoteUtil {
 
     public QuoteInfo getStockQuote(String stockCode) {
         try {
+            QuoteInfo quoteInfo = null;
             String result = HttpRequest.doGet(sinaQuoteUrl.replace("stockCodes", stockCode));
-            QuoteInfo quoteInfo = analysisResult(result);
+            if (StringUtils.hasText(result)) {
+                quoteInfo = analysisResult(result);
+            }
             return quoteInfo;
         } catch (IOException e) {
             logger.error("新浪行情获取失败,e:{}", e);
@@ -40,7 +44,9 @@ public class SinaQuoteUtilImpl implements QuoteUtil {
         Map<String, QuoteInfo> quoteInfoMap = new HashMap<String, QuoteInfo>();
         try {
             String result = HttpRequest.doGet(sinaQuoteUrl.replace("stockCodes", stockCodes));
-            resolveStr(quoteInfoMap, result);
+            if (StringUtils.hasText(result)) {
+                resolveStr(quoteInfoMap, result);
+            }
         } catch (IOException e) {
             logger.error("新浪行情批量获取失败,e:{}", e);
         }

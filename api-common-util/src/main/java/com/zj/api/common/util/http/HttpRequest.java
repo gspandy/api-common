@@ -14,17 +14,13 @@ import java.net.URL;
  */
 public class HttpRequest {
 
-    private static HttpURLConnection httpURLConnection;
-
-    private static URL url;
-
     public static String doGet(String httpUrl) throws IOException {
         StringBuffer result = new StringBuffer();
         InputStream inputStream;
         BufferedReader reader;
 
-        url = new URL(httpUrl);
-        httpURLConnection = (HttpURLConnection) url.openConnection();
+        URL url = new URL(httpUrl);
+        HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
         httpURLConnection.connect();
         inputStream = httpURLConnection.getInputStream();
         reader = new BufferedReader(new InputStreamReader(inputStream, "GBK"));
