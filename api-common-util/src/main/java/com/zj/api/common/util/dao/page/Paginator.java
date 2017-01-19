@@ -1,4 +1,4 @@
-package com.zj.api.common.util.page;
+package com.zj.api.common.util.dao.page;
 
 import java.io.Serializable;
 
