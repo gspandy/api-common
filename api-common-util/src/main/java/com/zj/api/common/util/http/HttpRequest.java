@@ -21,7 +21,7 @@ public class HttpRequest {
 
         URL url = new URL(httpUrl);
         HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-        httpURLConnection.setConnectTimeout(400);
+        httpURLConnection.setConnectTimeout(1000);
         httpURLConnection.connect();
         inputStream = httpURLConnection.getInputStream();
         reader = new BufferedReader(new InputStreamReader(inputStream, "GBK"));
