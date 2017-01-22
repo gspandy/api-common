@@ -27,6 +27,19 @@ public class StockCodesTest {
             writer.write(sb.toString());
             writer.flush();
             writer.close();
+
+            //保存到数据库
+            String[] stockCdoes = sb.toString().split(",");
+            StringBuffer params = new StringBuffer();
+            for (int i = 1; i < stockCdoes.length; i++) {
+                params.append(stockCdoes[i] + ",");
+                if (i % 50 == 0 || i == stockCdoes.length) {
+                    HttpRequest.doGet("http://localhost:8089//quote/getStockQuote.json?stockCodes=1223455".replace("1223455", params.toString()));
+                    params = new StringBuffer();
+                }
+            }
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
