@@ -5,7 +5,6 @@ import com.zj.api.common.util.quote.QuoteUtil;
 import com.zj.api.model.stock.QuoteInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;
@@ -22,8 +21,16 @@ public class SinaQuoteUtilImpl implements QuoteUtil {
 
     private final static Logger logger = LoggerFactory.getLogger(SinaQuoteUtilImpl.class);
 
-    @Value("${sinaQuoteUrl}")
     private String sinaQuoteUrl;
+
+
+    public String getSinaQuoteUrl() {
+        return sinaQuoteUrl;
+    }
+
+    public void setSinaQuoteUrl(String sinaQuoteUrl) {
+        this.sinaQuoteUrl = sinaQuoteUrl;
+    }
 
 
     public QuoteInfo getStockQuote(String stockCode) {
