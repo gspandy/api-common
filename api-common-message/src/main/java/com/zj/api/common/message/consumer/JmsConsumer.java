@@ -25,6 +25,26 @@ public class JmsConsumer implements InitializingBean {
 
     private ConsumerListener<?> delegate;
 
+    private String concurrency;
+
+    private int concurrentConsumers;
+
+    public int getConcurrentConsumers() {
+        return concurrentConsumers;
+    }
+
+    public void setConcurrentConsumers(int concurrentConsumers) {
+        this.concurrentConsumers = concurrentConsumers;
+    }
+
+    public String getConcurrency() {
+        return concurrency;
+    }
+
+    public void setConcurrency(String concurrency) {
+        this.concurrency = concurrency;
+    }
+
     public String getQueueName() {
         return queueName;
     }
@@ -66,6 +86,8 @@ public class JmsConsumer implements InitializingBean {
         defaultContainer.setMessageConverter(this.messageConverter);
         listenerAdapter.setDefaultListenerMethod("receiveMessage");
         defaultContainer.setMessageListener(listenerAdapter);
+        defaultContainer.setConcurrency(this.concurrency == null ? "1" : this.concurrency);
+        defaultContainer.setConcurrentConsumers(this.concurrentConsumers == 0 ? 1 : this.concurrentConsumers);
         if (queueName.contains("QUEUE")) {
             destination = new ActiveMQQueue(queueName);
         } else if (queueName.contains("TOPIC")) {
