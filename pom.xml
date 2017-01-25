@@ -12,6 +12,7 @@
         <module>api-model</module>
         <module>api-common-util</module>
         <module>api-common-message</module>
+        <module>api-web-security</module>
     </modules>
 
     <dependencies>
@@ -33,6 +34,13 @@
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-core</artifactId>
             <version>5.7.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.whalin/Memcached-Java-Client -->
+        <dependency>
+            <groupId>com.whalin</groupId>
+            <artifactId>Memcached-Java-Client</artifactId>
+            <version>3.0.2</version>
         </dependency>
 
         <!-- spring核心包 -->
@@ -69,6 +77,7 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
@@ -93,8 +102,31 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${javax.servlet.servlet-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>${javax.servlet.jsp.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${javax.servlet.jstl.version}</version>
+        </dependency>
+
     </dependencies>
     <properties>
+        <javax.servlet.servlet-api.version>2.5</javax.servlet.servlet-api.version>
+        <javax.servlet.jsp.version>2.1</javax.servlet.jsp.version>
+        <javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
         <spring.version>4.3.4.RELEASE</spring.version>
     </properties>
 
