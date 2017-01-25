@@ -23,6 +23,7 @@ public class SsoServiceImpl extends Config implements SsoService {
 
     private static final Logger logger = LoggerFactory.getLogger(SsoServiceImpl.class);
 
+    //通过spring注入
     private MemCachedClient memCachedClient;
 
     public MemCachedClient getMemCachedClient() {

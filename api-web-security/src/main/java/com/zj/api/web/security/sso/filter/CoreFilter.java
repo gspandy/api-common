@@ -2,6 +2,8 @@ package com.zj.api.web.security.sso.filter;
 
 
 import com.zj.api.web.security.sso.service.SsoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -16,11 +18,12 @@ import java.io.IOException;
 public class CoreFilter implements Filter {
 
 
+    @Autowired
     private SsoService ssoService;
 
 
     public void init(FilterConfig filterConfig) throws ServletException {
-
+        WebApplicationContextUtils.getRequiredWebApplicationContext(filterConfig.getServletContext()).getAutowireCapableBeanFactory().autowireBean(this);
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
