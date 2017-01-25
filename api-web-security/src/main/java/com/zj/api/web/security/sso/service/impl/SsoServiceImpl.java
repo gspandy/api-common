@@ -43,7 +43,7 @@ public class SsoServiceImpl extends Config implements SsoService {
                 if (StringUtils.hasText(cookie)) {
                     Object object = memCachedClient.get(cookie);
                     if (object != null) {
-                        memCachedClient.set(cookie, object, new Date(1000 * 60 * 30));
+                        memCachedClient.set(cookie, object, new Date(1000 * 60 * request.getSession().getMaxInactiveInterval()));
                         return true;
                     } else {
                         logger.info("SSO登录信息已过期,cookie:{}", cookie);
