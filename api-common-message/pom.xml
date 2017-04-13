@@ -11,5 +11,13 @@
 
     <artifactId>api-common-message</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.zj.api</groupId>
+            <artifactId>api-common-util</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
