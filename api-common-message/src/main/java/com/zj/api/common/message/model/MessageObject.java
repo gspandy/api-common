@@ -7,9 +7,19 @@ import java.io.Serializable;
  */
 public class MessageObject<T extends Serializable> implements Serializable {
 
+    private String destinationName;
+
     private long messageId;
 
     private T t;
+
+    public String getDestinationName() {
+        return destinationName;
+    }
+
+    public void setDestinationName(String destinationName) {
+        this.destinationName = destinationName;
+    }
 
     public long getMessageId() {
         return messageId;
@@ -30,7 +40,8 @@ public class MessageObject<T extends Serializable> implements Serializable {
     @Override
     public String toString() {
         return "MessageObject{" +
-                "messageId=" + messageId +
+                "destinationName='" + destinationName + '\'' +
+                ", messageId=" + messageId +
                 ", t=" + t +
                 '}';
     }

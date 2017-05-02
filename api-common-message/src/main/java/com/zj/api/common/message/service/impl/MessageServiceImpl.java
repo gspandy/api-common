@@ -4,7 +4,7 @@ package com.zj.api.common.message.service.impl;
 import com.zj.api.common.message.model.MessageObject;
 import com.zj.api.common.message.service.MessageService;
 
-import java.util.Date;
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -13,15 +13,8 @@ import java.util.List;
  */
 public class MessageServiceImpl implements MessageService {
 
-    public boolean saveMessage(String key, MessageObject message) {
-        try {
-            message.setMessageId(new Date().getTime());
-        } catch (IllegalArgumentException e) {
 
-        } catch (Exception e) {
-
-        }
-
+    public boolean saveMessage(MessageObject<Serializable> messageObject) {
         return false;
     }
 
@@ -29,11 +22,15 @@ public class MessageServiceImpl implements MessageService {
         return false;
     }
 
-    public List<MessageObject> getMessagesByKey(String key) {
+    public List<MessageObject> getAllMessage() {
         return null;
     }
 
-    public boolean checkMessage(String key, long messageId) {
+    public boolean checkMessage(long messageId) {
         return false;
+    }
+
+    public List<MessageObject> getTimeOutMessage(int timeout) {
+        return null;
     }
 }
