@@ -51,4 +51,14 @@ public interface MessageService {
      */
     List<MessageObject> getTimeOutMessage(int timeout);
 
+
+    /**
+     * 保存已经消费过的消息
+     *
+     * @param messageObject
+     * @return
+     */
+    boolean saveUserdMessage(MessageObject<Serializable> messageObject);
+
+
 }

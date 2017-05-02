@@ -33,4 +33,8 @@ public class MessageServiceImpl implements MessageService {
     public List<MessageObject> getTimeOutMessage(int timeout) {
         return null;
     }
+
+    public boolean saveUserdMessage(MessageObject<Serializable> messageObject) {
+        return false;
+    }
 }
