@@ -26,8 +26,8 @@ public abstract class ConsumerListener<T extends Serializable> {
             return;
         } else {
             if (messageService.saveUserdMessage(messageObject)) {
-                messageService.deleteMessage(messageObject.getMessageId());
                 receiveMessage((T) messageObject.getT());
+                messageService.deleteMessage(messageObject.getMessageId());
             }
         }
 
